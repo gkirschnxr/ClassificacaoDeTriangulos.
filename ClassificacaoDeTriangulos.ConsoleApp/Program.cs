@@ -87,9 +87,6 @@ namespace ClassificacaoDeTriangulos.ConsoleApp
                     Console.WriteLine("Os valores informados não formam um triangulo válido. Tente novamente.");
 
 
-
-
-
                 Console.WriteLine("_______________________________________");
                 Console.Write("Deseja continuar? (s/N) ");
                 string opcaoContinuar = Console.ReadLine()!.ToUpper();
