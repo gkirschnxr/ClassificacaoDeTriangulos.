@@ -15,13 +15,15 @@ internal class Program
 
             //exibir valores
             ExibirValoresInformados(ladoX, ladoY, ladoZ);
-                
+
             //verificar a validade do triangulo
 
+            bool medidasFormamTrianguloValido =
+                ClassificadorDeTriangulos.ValidacaoDeTriangulo(ladoX, ladoY, ladoZ);
 
-            if (ValidacaoDeTriangulo(ladoX, ladoY, ladoZ))
+            if (medidasFormamTrianguloValido)
             {
-                string tipoTriangulo = ClassificarTriangulo(ladoX, ladoY, ladoZ);
+                string tipoTriangulo = ClassificadorDeTriangulos.ClassificarTriangulo(ladoX, ladoY, ladoZ);
 
                 Console.WriteLine($"O triangulo é {tipoTriangulo}.");
             }
@@ -71,34 +73,5 @@ internal class Program
         Console.WriteLine("Lado Y: " + ladoY);
         Console.WriteLine("Lado Z: " + ladoZ);
         Console.WriteLine("-------------------------------------");
-    }
-
-    static bool ValidacaoDeTriangulo (int ladoX, int ladoY, int ladoZ)
-    {
-        bool medidasTriangulosValidas =
-            ladoX + ladoY > ladoZ &&
-            ladoY + ladoZ > ladoX &&
-            ladoZ + ladoX > ladoY;
-
-        return medidasTriangulosValidas;
-    }
-
-    static string ClassificarTriangulo(int ladoX, int ladoY, int ladoZ)
-    {
-        // Eqüilátero: Todos os lados iguais;
-        // Isósceles: Dois lados iguais;
-        // Escaleno: Todos os lados diferentes.
-        string tipoTriangulo = "Não classificado";
-
-        if (ladoX == ladoY && ladoY == ladoZ)
-            tipoTriangulo = "Eqüilátero";
-
-        else if (ladoX != ladoY && ladoY != ladoZ && ladoX != ladoZ)
-            tipoTriangulo = "Escaleno";
-
-        else
-            tipoTriangulo = "Isósceles";
-
-        return tipoTriangulo;
     }
 }
